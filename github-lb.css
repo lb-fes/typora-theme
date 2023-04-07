@@ -278,7 +278,9 @@ table td:last-child {
     font-size: 0.9em;
     color: rgb(209,213,219)
 }
-
+.md-fences .code-tooltip {
+    border-radius: 6px;
+}
 code,
 tt {
     border: 1px solid #e7eaed;
