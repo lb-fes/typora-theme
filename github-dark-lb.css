@@ -1,0 +1,509 @@
+:root {
+
+    /* 左侧边栏和文本编辑区的文本颜色 */
+    --text-color: rgb(209,213,219);
+
+    /* 左侧边栏 */
+    --side-bar-bg-color: #202123;
+
+    /* 左侧边栏 文件*/
+    --control-text-color: rgb(236,236,241);
+    --active-file-bg-color: #343541;
+    --control-text-hover-color: #338bca;
+    --window-border: 1px solid #404040;
+
+    /* 大纲 */
+    --item-hover-bg-color: #2a2b32;
+
+    /* 文本编辑区 */
+    --bg-color: #444654;
+    --select-text-bg-color: #0e6bdd;
+    --heading-char-color: #aaa;
+
+    /* 代码块的等宽字体 */
+    --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 30px 30px 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #00a2ff;
+    text-decoration: none;
+    border-bottom: 1px solid #00a2ff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.25em;
+    line-height: 1.2;
+    padding-bottom: 3px;/*让链接下划线与底部边框分开*/
+    border-bottom: 1px solid #808080;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    padding-bottom: 3px;/*让链接下划线与底部边框分开*/
+    border-bottom: 1px solid #808080;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+    font-size: 1em;
+    color: #ccc;
+}
+
+/* h3~h6标题前的等级提示 */
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #c7c5c5;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #aaaaaa80;
+    padding: 0 15px;
+    color: #aaa;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border: 1px solid #d9d9e3;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #656773;
+}
+
+table th {
+    font-weight: bold;
+    border: 1px solid #d9d9e3;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table td {
+    border: 1px solid #d9d9e3;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+/* 行内代码 */
+code,
+tt {
+    border: 1px solid #e7eaed4a;
+    background-color: rgb(119 119 119 / 0.3);
+    border-radius: 3px;
+    padding: 1px 2px 2px 2px;
+    font-size: 0.9em;
+}
+/* 代码块 */
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 6px;
+    background-color: #1e1e1e;
+    padding: 8px 4px 6px 4px;
+    font-size: 0.9em;
+}
+.md-fences .code-tooltip {
+    border-radius: 6px;
+}
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+/* 行号右侧的竖线 */
+.CodeMirror-gutters {
+    border-right: 1px solid #484848;
+}
+/* 行号 */
+.CodeMirror-linenumber {
+    color: #808080;
+}
+/* 关键字颜色
+   if else for
+*/
+.cm-s-inner .cm-keyword {
+    color: #C586C0;
+}
+/* 原子类型
+true, false, null, CSS 属性值
+*/
+.cm-s-inner .cm-atom{
+    color: #CE9178;
+}
+.cm-s-inner.cm-atom {
+    color: #9cdcfe;
+}
+/* 数字 */
+.cm-s-inner .cm-number {
+    color: #B5CEA8;
+}
+/* 函数定义、变量声明等 */
+.cm-s-inner .cm-def {
+    color: #DCDCAA;
+}
+/* 变量 */
+.cm-s-inner .cm-variable {
+    color: #9CDCFE;
+}
+.cm-s-inner .cm-variable-2 {
+    color: #9CDCFE;
+}
+.cm-s-inner .cm-variable-3 {
+    color: #9CDCFE;
+}
+/* 字符串 */
+.cm-s-inner .cm-string {
+    color: #CE9178;
+}
+.cm-s-inner .cm-string-2 {
+    color: #CE9178;
+}
+
+.cm-s-inner .cm-property {
+    color: #9CDCFE;
+}
+
+.cm-s-inner .cm-operator {
+    color: #D4D4D4;
+}
+
+.cm-s-inner .cm-comment,
+.cm-s-inner.cm-comment {
+    color: #6A9955;
+}
+/* 表示元信息，例如编程语言的特殊指令、注释或其他非代码的辅助性文本。*/
+.cm-s-inner .cm-meta {
+    color: #D4D4D4;
+}
+/* 表示类型限定符或修饰符，例如访问修饰符（如 public、private、protected）
+或类型修饰符（如 static、final、const）*/
+.cm-s-inner .cm-qualifier {
+    color: #DCDCAA;
+}
+/* 表示内建或预定义的对象、方法或属性 */
+.cm-s-inner .cm-builtin {
+    color: #DCDCAA;
+}
+/* 表示括号，例如圆括号、方括号或花括号 */
+.cm-s-inner .cm-bracket {
+    color: #DCDCAA;
+}
+/* 为标签元素（例如 HTML 标签、XML 标签等）设置样式 */
+.cm-s-inner .cm-tag {
+    color: #569CD6;
+}
+
+.cm-s-inner .cm-attribute {
+    color: #9CDCFE;
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner.cm-header {
+    color: #DCDCAA;
+}
+
+.cm-s-inner .cm-quote,
+.cm-s-inner.cm-quote {
+    color: #6A9955;
+}
+
+.cm-s-inner .cm-hr,
+.cm-s-inner.cm-hr {
+    color: #D4D4D4;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #569CD6;
+}
+
+.cm-negative {
+    color: #F44747;
+}
+
+.cm-positive {
+    color: #B5CEA8;
+}
+
+.cm-header,
+.cm-strong {
+    font-weight: 700;
+}
+
+.cm-em {
+    font-style: italic;
+}
+
+.cm-link {
+    text-decoration: underline;
+}
+
+.cm-error {
+    color: #F44747;
+}
+
+.cm-invalidchar {
+    color: #F44747;
+}
+
+.cm-constant {
+    color: #4EC9B0;
+}
+
+.cm-defined {
+    color: #DCDCAA;
+}
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+    color: #DCDCAA;
+}
+
+div.CodeMirror span.CodeMirror-nonmatchingbracket {
+    color: #F44747;
+}
+
+.cm-searching {
+    background: #ffa;
+    background: rgba(255, 255, 0, 0.4);
+}
+
+.cm-tw-syntaxerror {
+    color: #D4D4D4;
+    background-color: #900;
+}
+/* 光标颜色 */
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 3px solid #adaeac;
+}
+
+#typora-source .CodeMirror-gutter-wrapper {
+    font-family: var(--monospace) !important;
+}
+
+.cm-s-typora-default .CodeMirror-activeline-background {
+    left: -99999px;
+    right: -99999px;
+    background: #80808020;
+}
+
+.cm-s-typora-default .cm-code, .cm-s-typora-default .cm-comment {
+    color: #6A9955;
+    font-family: var(--monospace);
+}
+
+.cm-s-typora-default .cm-string {
+    color: #CE9178;
+}
+
+.cm-s-typora-default .cm-tag {
+    color: #569CD6;
+}
+
+/* 任务列表 */
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+/* YAML */
+#write pre.md-meta-block {
+    margin-top: 0;
+    border: 0;
+    border-radius: 3px;
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    color: #777777;
+}
+
+/* 公式块中的代码提示 */
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+/* 目录 */
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* 大纲右键菜单 */
+#outline-menu li a {
+    border-bottom: 1px solid #808080;
+}
