@@ -2,6 +2,7 @@
     --side-bar-bg-color: #fafafa;
     --control-text-color: #777;
     --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
+    --select-text-bg-color: #0e6bdd91;
 }
 /*loli.net 是 SM.MS 免费图床的图片 CDN 域名*/
 @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
@@ -53,8 +54,7 @@ body {
 #write {
     max-width: 860px;
     margin: 0 auto;
-    padding: 30px;
-    padding-bottom: 100px;
+    padding: 30px 30px 100px;
 }
 
 @media only screen and (min-width: 1400px) {
