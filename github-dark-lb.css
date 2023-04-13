@@ -58,9 +58,11 @@ body {
     margin-top: 30px;
 }
 
-a {
+#write a {
     color: #00a2ff;
     text-decoration: none;
+}
+#write a:hover {
     border-bottom: 1px solid #00a2ff;
 }
 
