@@ -157,6 +157,24 @@ h6 code {
     font-size: inherit;
 }
 
+/* .md-focus 控制 h3 ~ h6 前面的标题等级提示*/
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
 p,
 blockquote,
 ul,
@@ -468,6 +486,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .cm-s-typora-default .cm-tag {
     color: #569CD6;
 }
+
+/* 任务列表 */
 .md-task-list-item > input {
     margin-left: -1.3em;
 }
@@ -483,17 +503,19 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     }
 }
 
+/* YAML */
 #write pre.md-meta-block {
+    margin-top: 0 !important;
+    border: 0;
+    border-radius: 3px;
     padding: 1rem;
     font-size: 85%;
     line-height: 1.45;
     background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
     color: #777777;
-    margin-top: 0 !important;
 }
 
+/* 公式块中的代码提示 */
 .mathjax-block > .code-tooltip {
     bottom: .375rem;
 }
@@ -501,27 +523,12 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 .md-mathjax-midline {
     background: #fafafa;
 }
-/* .md-focus 控制 h3 ~ h6 前面的标题等级提示*/
-#write > h3.md-focus:before {
-    left: -1.5625rem;
-    top: .375rem;
-}
 
-#write > h4.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+/* 目录 */
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
-
-#write > h5.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
-#write > h6.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
-}
-
 .md-image > .md-meta {
     /*border: 1px solid #ddd;*/
     border-radius: 3px;
@@ -535,10 +542,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     opacity: 1;
 }
 
-.md-toc {
-    margin-top: 20px;
-    padding-bottom: 20px;
-}
 
 .sidebar-tabs {
     border-bottom: none;
