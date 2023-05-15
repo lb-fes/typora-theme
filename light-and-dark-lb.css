@@ -2,8 +2,8 @@
     :root {
         --side-bar-bg-color: #fafafa;
         --control-text-color: #777;
-        --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
         --select-text-bg-color: #0e6bdd91;
+        --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
     }
 
     body {
@@ -17,9 +17,7 @@
         border-bottom: 1px solid #4183C4;
     }
 
-    h1 {
-        border-bottom: 1px solid #eee;
-    }
+    h1,
     h2 {
         border-bottom: 1px solid #eee;
     }
@@ -36,16 +34,12 @@
         color: #777777;
     }
     /* 表格 */
-    table tr {
-        border: 1px solid #dfe2e5;
-    }
     table tr:nth-child(2n),
     thead {
         background-color: #f8f8f8;
     }
-    table th {
-        border: 1px solid #dfe2e5;
-    }
+    table tr,
+    table th,
     table td {
         border: 1px solid #dfe2e5;
     }
@@ -57,7 +51,7 @@
     }
     /* 代码块 */
     .md-fences {
-        color: rgb(209,213,219)
+        color: #d1d5db
     }
 }
 
@@ -83,7 +77,6 @@
         --select-text-bg-color: #0e6bdd;
         --heading-char-color: #aaa;
 
-        /* 代码块的等宽字体 */
         --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
     }
 
@@ -94,9 +87,7 @@
         border-bottom: 1px solid #4183C4;
     }
 
-    h1 {
-        border-bottom: 1px solid #808080;
-    }
+    h1,
     h2 {
         border-bottom: 1px solid #808080;
     }
@@ -112,17 +103,13 @@
         border-left: 4px solid #aaaaaa80;
         color: #aaa;
     }
-
-    table tr {
-        border: 1px solid #d9d9e3;
-    }
+    /* 表格 */
     table tr:nth-child(2n),
     thead {
         background-color: #656773;
     }
-    table th {
-        border: 1px solid #d9d9e3;
-    }
+    table tr,
+    table th,
     table td {
         border: 1px solid #d9d9e3;
     }
@@ -130,7 +117,7 @@
     code,
     tt {
         border: 1px solid #e7eaed4a;
-        background-color: rgb(119 119 119 / 0.3);
+        background-color: #777777;
     }
     /* 大纲右键菜单 */
     #outline-menu li a {
