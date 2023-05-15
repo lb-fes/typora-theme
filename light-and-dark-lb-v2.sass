@@ -3,6 +3,21 @@
     --side-bar-bg-color: #fafafa
     --control-text-color: #777
     --select-text-bg-color: #0e6bdd91
+    --body-color: #333
+
+    // border
+    --border-bottom-color: #eee
+    --blockquote-border-left-color: #dfe2e5
+    --tr-th-td-border-color: var(--blockquote-border-left-color)
+    --code-border-color: #e7eaed
+    // background
+    --hr-background-color: #e7e7e7
+    --tr-zebra-striping-background-color: #f8f8f8
+    --thead-background-color: var(--tr-zebra-striping-background-color)
+    --code-background-color: #f3f4f4
+    // color
+    --blockquote-color: #777
+
   @media (prefers-color-scheme: dark)
     // 左侧边栏和文本编辑区的文本颜色
     --text-color: rgb(209,213,219)
@@ -19,36 +34,48 @@
     --bg-color: #444654
     --select-text-bg-color: #0e6bdd
     --heading-char-color: #aaa
+    // border
+    --border-color: #777
+    --border-bottom-color: #808080
+    --blockquote-border-left-color: #aaaaaa80
+    --tr-th-td-border-color: #d9d9e3
+    --code-border-color: #e7eaed4a
+    // background
+    --hr-background-color: #c7c5c5
+    --tr-zebra-striping-background-color: #656773
+    --thead-background-color: var(--tr-zebra-striping-background-color)
+    --code-background-color: #77777730
+    // color
+    --body-color: #d0d0d0
+    --blockquote-color: #aaa
   --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace
+  --link-color: #4183C4
+  --link-hover-border-bottom: var(--link-color)
+  --sans-serif: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif
 
-$primary-size: 16px
-$sans-serif-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif
-$body-color-light: #333
-$body-color-dark: #d0d0d0
-$link-color: #4183C4
-$link-hover-border-bottom-light: $link-color
-$heading-border-bottom-light: #eee
-$heading-border-bottom-dark: #808080
-$outline-menu-li-a-color-dark: $heading-border-bottom-dark
-$h6-color-light: #777
-$h6-color-dark: #ccc
-$hr-background-color-light: #e7e7e7
-$hr-background-color-dark: #c7c5c5
-$blockquote-border-left-color-light: #dfe2e5
-$blockquote-border-left-color-dark: #aaaaaa80
-$blockquote-color-light: $h6-color-light
-$blockquote-color-dark: #aaa
-$tr-zebra-striping-light: #f8f8f8
-$tr-zebra-striping-dark: #656773
-$thead-background-color-light: $tr-zebra-striping-light
-$thead-background-color-dark: $tr-zebra-striping-dark
-$tr-th-td-border-color-light: $blockquote-border-left-color-light
-$tr-th-td-border-color-dark: #d9d9e3
-$code-border-color-light: #e7eaed
-$code-border-color-dark: #e7eaed4a
-$code-background-color-light: #f3f4f4
-$code-background-color-dark: #77777730
-$md-fences-color: #d1d5db
+// visual studio code dark plus 配色
+$vsc-keyword: #C586C0
+$vsc-atom: #CE9178  // 原子类型
+$vsc-string: $vsc-atom
+$vsc-var: #9CDCFE
+$vsc-property: $vsc-var
+$vsc-attribute: $vsc-var
+$vsc-number: #DCDCAA
+$vsc-qualifier: $vsc-number // public、private、protected、static、final、const）
+$vsc-builtin: $vsc-number
+$vsc-bracket: $vsc-number // 括号
+$vsc-header: $vsc-number
+$vsc-def: $vsc-number // 函数声明
+$vsc-operator: #D4D4D4
+$vsc-meta: $vsc-operator // 元信息，例如编程语言的特殊指令、注释或其他非代码的辅助性文本。
+$vsc-hr: $vsc-operator
+$vsc-comment: #6A9955
+$vsc-quote: $vsc-comment
+$vsc-tag: #569CD6 // tag: 标签元素
+$vsc-link: $vsc-tag
+$vsc-negative: #F44747
+$vsc-positive: #B5CEA8
+
 // loli.net 是 SM.MS 免费图床的图片 CDN 域名
 @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext)
 
@@ -85,18 +112,15 @@ $md-fences-color: #d1d5db
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
 
 html
-  font-size: $primary-size
+  font-size: 16px
   @media print
     font-size: 13px
   -webkit-font-smoothing: antialiased
 
 body
-  font-family: $sans-serif-family
+  font-family: var(--sans-serif)
   line-height: 1.6
-  @media (prefers-color-scheme: light)
-    color: $body-color-light
-  @media (prefers-color-scheme: dark)
-    color: $body-color-dark
+  color: var(--body-color)
 #write
   max-width: 860px
   margin: 0 auto
@@ -121,9 +145,9 @@ body
           top: .285714286rem
   a
     text-decoration: none
-    color: $link-color
+    color: var(--link-color)
     &:hover
-      border-bottom: 1px solid $link-hover-border-bottom-light
+      border-bottom: 1px solid var(--link-hover-border-bottom)
   // YAML
   pre.md-meta-block
     margin-top: 0 !important
@@ -143,20 +167,12 @@ $heading-line-height: 1.2
     margin-top: 1rem
     margin-bottom: 1rem
     @if($i == 1 or $i == 2)
-      @media (prefers-color-scheme: light)
-        border-bottom: 1px solid $heading-border-bottom-light
-      @media (prefers-color-scheme: dark)
-        border-bottom: 1px solid $heading-border-bottom-dark
+      border-bottom: 1px solid var(--border-bottom-color)
       padding-bottom: 3px
     font-size: $heading-size
     font-weight: bold
     line-height: $heading-line-height
     cursor: text
-    @if($i == 6)
-      @media (prefers-color-scheme: light)
-        color: $h6-color-light
-      @media (prefers-color-scheme: dark)
-        color: $h6-color-dark
     @if ($i == 1)
       text-align: center
     &:hover
@@ -192,12 +208,8 @@ li
     display: inline-block
 
 blockquote
-  @media (prefers-color-scheme: light)
-    border-left: 4px solid $blockquote-border-left-color-light
-    color: $blockquote-color-light
-  @media (prefers-color-scheme: dark)
-    border-left: 4px solid $blockquote-border-left-color-dark
-    color: $blockquote-color-dark
+  border-left: 4px solid var(--blockquote-border-left-color-light)
+  color: var(--blockquote-color-light)
   padding: 0 15px
   blockquote
     padding-left: 0
@@ -209,10 +221,7 @@ table
     margin: 0
     padding: 0
     &:nth-child(2n)
-      @media (prefers-color-scheme: light)
-        background-color: $tr-zebra-striping-light
-      @media (prefers-color-scheme: dark)
-        background-color: $tr-zebra-striping-dark
+      background-color: var(--tr-zebra-striping-background-color)
   th,
   td
     margin: 0
@@ -227,15 +236,9 @@ table
   tr,
   th,
   td
-    @media (prefers-color-scheme: light)
-      border: 1px solid $tr-th-td-border-color-light
-    @media (prefers-color-scheme: dark)
-      border: 1px solid $tr-th-td-border-color-dark
+    border: 1px solid var(--tr-th-td-border-color)
 thead
-  @media (prefers-color-scheme: light)
-    background-color: $thead-background-color-light
-  @media (prefers-color-scheme: dark)
-    background-color: $thead-background-color-dark
+  background-color: var(--thead-background-color)
 
 hr
   box-sizing: content-box
@@ -244,10 +247,7 @@ hr
   border: 0 none
   padding: 0
   overflow: hidden
-  @media (prefers-color-scheme: light)
-    background-color: $hr-background-color-light
-  @media (prefers-color-scheme: dark)
-    background-color: $hr-background-color-dark
+  background-color: var(--hr-background-color)
 pre
   @media print
     page-break-inside: avoid
@@ -258,12 +258,8 @@ tt
   border-radius: 3px
   padding: 1px 2px 2px 2px
   font-size: 0.9em
-  @media (prefers-color-scheme: light)
-    border: 1px solid $code-border-color-light
-    background-color: $code-background-color-light
-  @media (prefers-color-scheme: dark)
-    border: 1px solid $code-border-color-dark
-    background-color: $code-background-color-dark
+  border: 1px solid var(--code-border-color)
+  background-color: var(--code-background-color)
 
 .md-
   &fences // 代码块
@@ -274,7 +270,7 @@ tt
     padding: 8px 4px 6px 4px
     background-color: #1e1e1e
     font-size: .9em
-    color: $md-fences-color
+    color: #d1d5db
     .code-tooltip
       border-radius: 6px
   &task-list-item
@@ -308,62 +304,63 @@ tt
   div.CodeMirror-cursor
     border-left: 3px solid #adaeac
 
-// visual studio code dark plus 配色
-$vsc-keyword: #C586C0
-$vsc-atom-str: #CE9178 // 原子类型、字符串
-//同时含有inner和atom、变量、属性、特性
-$vsc-inner-atom-var-property-attribute: #9CDCFE
-// qualifier:类型限定符或修饰符，例如访问修饰符（如 public、private、protected）或类型修饰符（如 static、final、const）
-// bracket: 括号
-$vsc-number-qualifier-builtin-bracket-header-def: #DCDCAA
-// 元信息，例如编程语言的特殊指令、注释或其他非代码的辅助性文本。
-$vsc-operator-meta-hr: #D4D4D4
-$vsc-comment-quote: #6A9955
-$vsc-tag-link: #569CD6 // tag: 标签元素
-$vsc-negative: #F44747
-$vsc-positive: #B5CEA8
 .cm-
   &s-
     &inner
       .cm-
         &keyword
           color: $vsc-keyword
-        &atom,
-        &string,
+        &atom
+          color: $vsc-atom
+        &string
+          color: $vsc-string
         &string-2
-          color: $vsc-atom-str
-        &number,
-        &qualifier,
-        &builtin,
-        &bracket,
-        &header,
-        &def
-          color: $vsc-number-qualifier-builtin-bracket-header-def
-        &variable,
-        &variable-2,
-        &variable-3,
-        &property,
+          color: $vsc-string
+        &number
+          color: $vsc-number
+        &qualifier
+          color: $vsc-qualifier
+        &builtin  // CSS: id选择器
+          color: $vsc-builtin
+        &bracket
+          color: $vsc-bracket
+        &header
+          color: $vsc-header
+        &def  // CSS: @规则
+          color: $vsc-def
+        &variable
+          color: $vsc-var
+        &variable-2
+          color: $vsc-var
+        &variable-3 // 包含 CSS 伪类
+          color: #d7ba7d
+        &property
+          color: $vsc-property
         &attribute
-          color: $vsc-inner-atom-var-property-attribute
-        &operator,
-        &meta,
+          color: $vsc-attribute
+        &operator
+          color: $vsc-operator
+        &meta
+          color: $vsc-meta
         &hr
-          color: $vsc-operator-meta-hr
-        &comment,
+          color: $vsc-hr
+        &comment
+          color: $vsc-comment
         &quote
-          color: $vsc-comment-quote
-        &tag,
+          color: $vsc-quote
+        &tag
+          color: $vsc-tag
         &link
-          color: $vsc-tag-link
+          color: $vsc-link
         &negative
           color: $vsc-negative
         &positive
           color: $vsc-positive
       &.cm-
         &atom
-          color: $vsc-inner-atom-var-property-attribute
+          color: #9CDCFE
         &comment
-          color: $vsc-comment-quote
+          color: $vsc-comment
     &typora-default
       .CodeMirror-activeline-background
         left: -9999px
@@ -372,12 +369,12 @@ $vsc-positive: #B5CEA8
       .cm-
         &code,
         &comment
-          color: $vsc-comment-quote
+          color: $vsc-comment
           font-family: var(--monospace)
         &string
           color: #CE9178
         &tag
-          color: $vsc-tag-link
+          color: $vsc-tag
   &header,
   &strong
     font-weight: 700
@@ -391,20 +388,20 @@ $vsc-positive: #B5CEA8
   &constant
     color: #4EC9B0
   &defined
-    color: $vsc-number-qualifier-builtin-bracket-header-def
+    color: $vsc-number
   &searching
     // 出于兼容性考虑，设置两个 background
     // fixme 似乎都不会生效
     background: #ffa  // #ffffaa 的缩写
     background: rgba(255, 255, 0, .4)
   &tw-syntaxerror
-    color: $vsc-operator-meta-hr
+    color: $vsc-operator
     background-color: #900
 
 div.CodeMirror
   span.CodeMirror-
     &matchingbracket
-      color: $vsc-number-qualifier-builtin-bracket-header-def
+      color: $vsc-number
     &nonmatchingbracket
       color: $vsc-negative
 
@@ -436,7 +433,7 @@ header,
 .context-menu,
 .megamenu-content,
 footer
-  font-family: $sans-serif-family
+  font-family: var(--sans-serif)
 
 .file-node-content:hover
   .file-node-
@@ -456,9 +453,12 @@ footer
   .divider
     border-color: #e5e5e5
 
-.ty-preferences
+.ty-preferences   // 设置页
   .window-content
-    background-color: #fafafa
+    @media (prefers-color-scheme: light)
+      background-color: #fafafa
+    @media (prefers-color-scheme: dark)
+      background-color: var(--bg-color)
   .nav-group-item.active
     color: white
     background: #999
@@ -471,5 +471,7 @@ footer
 #outline-menu
   li
     a
-      @media (prefers-color-scheme: dark)
-        border-bottom: 1px solid $outline-menu-li-a-color-dark
+      border-bottom: 1px solid var(--border-bottom-color)
+// 右键菜单
+.context-menu
+  border: 1px solid var(--border-color)
