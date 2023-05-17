@@ -1,3 +1,5 @@
+// 编译：sass --watch .\light-and-dark-lb-v2\light-and-dark-lb-v2.sass .\light-and-dark-lb-v2.css
+// todo 调整结构
 \:root
   @media (prefers-color-scheme: light)
     --side-bar-bg-color: #fafafa
@@ -7,13 +9,10 @@
 
     // border
     --border-bottom-color: #eee
-    --tr-th-td-border-color: var(--blockquote-border-left-color)
+
     --code-border-color: #e7eaed
     // background
     --hr-background-color: #e7e7e7
-    --tr-zebra-striping-background-color: #f8f8f8
-    --thead-background-color: var(--tr-zebra-striping-background-color)
-    --code-background-color: #f3f4f4
 
     // 右键菜单
     --context-menu-btn-background-color: #f5f8fa
@@ -22,6 +21,14 @@
     // 块引用
     --blockquote-border-left-color-light: #dfe2e5
     --blockquote-color-light: #777777
+
+    // 表格
+    --tr-th-td-border-color: var(--blockquote-border-left-color)
+    --tr-zebra-striping-background-color: #f8f8f8
+    --thead-background-color: var(--tr-zebra-striping-background-color)
+
+    // 行内代码
+    --code-background-color: #f3f4f4
 
   @media (prefers-color-scheme: dark)
     // 左侧边栏和文本编辑区的文本颜色
@@ -42,7 +49,6 @@
     // border
     --border-color: #777
     --border-bottom-color: #808080
-
 
     --tr-th-td-border-color: #d9d9e3
     --code-border-color: #e7eaed4a
