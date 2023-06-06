@@ -11,7 +11,7 @@
     // border
     --border-bottom-color: #eee
 
-    --code-border-color: #e7eaed
+    --code-border-color: #808080b3
     // background
     --hr-background-color: #e7e7e7
 
@@ -322,7 +322,7 @@ tt
     color: #808080
   &-gutters  // 行号右侧的竖线
     border-right: 1px solid #484848
-  div.CodeMirror-cursor
+  div.CodeMirror-cursor // 代码块内的光标
     border-left: 1px solid #adaeac
 
 .cm-
@@ -377,6 +377,9 @@ tt
           color: $vsc-negative
         &positive
           color: $vsc-positive
+        // typescript 类型
+        &type
+          color: #37c8ac
       &.cm-
         &atom
           color: #9CDCFE
