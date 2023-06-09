@@ -2,71 +2,9 @@
 // sass --watch light-and-dark-lb.sass C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
 
 \:root
-  @media (prefers-color-scheme: light)
-    --side-bar-bg-color: #fafafa
-    --control-text-color: #777
-    --select-text-bg-color: #0e6bdd91
-    --body-color: #333
+  @import "light-scheme"
 
-    // border
-    --border-bottom-color: #eee
-
-    --code-border-color: #808080b3
-    // background
-    --hr-background-color: #e7e7e7
-
-    // 右键菜单
-    --context-menu-btn-background-color: #f5f8fa
-    --context-menu-btn-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0))
-
-    // 块引用
-    --blockquote-border-left-color: #dfe2e5
-    --blockquote-color: #777777
-
-    // 表格
-    --table-border-color: var(--blockquote-border-left-color)
-    --tr-zebra-striping-background-color: #f8f8f8
-    --thead-background-color: var(--tr-zebra-striping-background-color)
-
-    // 行内代码
-    --code-background-color: #f3f4f4
-
-  @media (prefers-color-scheme: dark)
-    // 左侧边栏和文本编辑区的文本颜色
-    --text-color: rgb(209,213,219)
-    // 左侧边栏
-    --side-bar-bg-color: #202123
-    // 左侧边栏 文件
-    --control-text-color: rgb(236,236,241)
-    --active-file-bg-color: #343541
-    --control-text-hover-color: #338bca
-    --window-border: 1px solid #404040
-    // 大纲
-    --item-hover-bg-color: #2a2b32
-    // 文本编辑区
-    --bg-color: #444654
-    --select-text-bg-color: #0e6bdd
-    --heading-char-color: #aaa
-    // border
-    --border-color: #777
-    --border-bottom-color: #808080
-    // 表格
-    --table-border-color: #d9d9e3
-    // 行内代码
-    --code-border-color: #e7eaed4a
-    // background
-    --hr-background-color: #c7c5c5
-    --tr-zebra-striping-background-color: #656773
-    --thead-background-color: var(--tr-zebra-striping-background-color)
-    --code-background-color: #77777730
-    // color
-    --body-color: #d0d0d0
-    // 块引用
-    --blockquote-border-left-color: #aaaaaa80
-    --blockquote-color: #aaa
-    // 右键菜单按钮
-    --context-menu-btn-background-color: var(--bg-color)
-    --context-menu-btn-background-image: linear-gradient(180deg, rgba(68, 70, 84, 0.8), rgba(68, 70, 84, 0))
+  @import "dark-scheme"
 
   --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace
   --link-color: #4183C4
