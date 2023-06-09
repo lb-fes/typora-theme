@@ -1,0 +1,37 @@
+@media (prefers-color-scheme: dark){
+  // 左侧边栏和文本编辑区的文本颜色
+  --text-color: rgb(209,213,219);
+  // 左侧边栏
+  --side-bar-bg-color: #202123;
+  // 左侧边栏 文件
+  --control-text-color: rgb(236,236,241);
+  --active-file-bg-color: #343541;
+  --control-text-hover-color: #338bca;
+  --window-border: 1px solid #404040;
+  // 大纲
+  --item-hover-bg-color: #2a2b32;
+  // 文本编辑区
+  --bg-color: #444654;
+  --select-text-bg-color: #0e6bdd;
+  --heading-char-color: #aaa;
+  // border
+  --border-color: #777;
+  --border-bottom-color: #808080;
+  // 表格
+  --table-border-color: #d9d9e3;
+  // 行内代码
+  --code-border-color: #e7eaed4a;
+  // background
+  --hr-background-color: #c7c5c5;
+  --tr-zebra-striping-background-color: #656773;
+  --thead-background-color: var(--tr-zebra-striping-background-color);
+  --code-background-color: #77777730;
+  // color
+  --body-color: #d0d0d0;
+  // 块引用
+  --blockquote-border-left-color: #aaaaaa80;
+  --blockquote-color: #aaa;
+  // 右键菜单按钮
+  --context-menu-btn-background-color: var(--bg-color);
+  --context-menu-btn-background-image: linear-gradient(180deg, rgba(68, 70, 84, 0.8), rgba(68, 70, 84, 0));
+}

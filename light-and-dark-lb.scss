@@ -1,39 +1,16 @@
 // 编译并监视：
 // sass --watch light-and-dark-lb.sass C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
 
-\:root
-  @import "light-scheme"
-
-  @import "dark-scheme"
-
-  --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace
-  --link-color: #4183C4
-  --link-hover-border-bottom: var(--link-color)
-  --sans-serif: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif
-  --search-select-bg-color: var(--select-text-bg-color)
-
-// visual studio code dark plus 配色
-$vsc-keyword: #C586C0
-$vsc-atom: #CE9178  // 原子类型
-$vsc-string: $vsc-atom
-$vsc-var: #9CDCFE
-$vsc-property: $vsc-var
-$vsc-attribute: $vsc-var
-$vsc-number: #DCDCAA
-$vsc-qualifier: $vsc-number // public、private、protected、static、final、const）
-$vsc-builtin: $vsc-number
-$vsc-bracket: $vsc-number // 括号
-$vsc-header: $vsc-number
-$vsc-def: $vsc-number // 函数声明
-$vsc-operator: #D4D4D4
-$vsc-meta: $vsc-operator // 元信息，例如编程语言的特殊指令、注释或其他非代码的辅助性文本。
-$vsc-hr: $vsc-operator
-$vsc-comment: #6A9955
-$vsc-quote: $vsc-comment
-$vsc-tag: #569CD6 // tag: 标签元素
-$vsc-link: $vsc-tag
-$vsc-negative: #F44747
-$vsc-positive: #B5CEA8
+:root {
+    @import "light-scheme";
+    @import "dark-scheme";
+    --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
+    --link-color: #4183C4;
+    --link-hover-border-bottom: var(--link-color);
+    --sans-serif: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --search-select-bg-color: var(--select-text-bg-color);
+}
+@import "vsc-scheme";
 
 // loli.net 是 SM.MS 免费图床的图片 CDN 域名
 @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext)
@@ -269,7 +246,7 @@ tt
     &inner
       .cm-
         &keyword
-          color: $vsc-keyword
+          color: var(--vsc-keyword)
         &atom
           color: $vsc-atom
         &string
