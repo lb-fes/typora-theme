@@ -2,32 +2,22 @@
 // sass --watch light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
 @import "light-scheme";
 @import "dark-scheme";
-:root {
-    --monospace: "JetBrains Mono NL", "Fira Code", "微软雅黑", monospace;
-    --link-color: #4183C4;
-    --link-hover-border-bottom: var(--link-color);
-    --sans-serif: "HarmonyOS Sans SC","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
-    --search-select-bg-color: var(--select-text-bg-color);
-}
-@import "vsc-scheme";
-@import "class";
-@import "mixin";
+@import "root";
+@import "../vsc-scheme";
 
 html {
-    font-size: 16px;
+    font-size: var(--html-size);
     @media print {
-        font-size: 13px;
+        font-size: var(--print-html-size);
     }
     -webkit-font-smoothing: antialiased
 }
 
 body {
     font-family: var(--sans-serif);
-    line-height: 1.6;
+    line-height: var(--body-line-height);
     color: var(--body-color);
 }
-
-
 
 #write {
     max-width: 768px;
@@ -39,10 +29,10 @@ body {
         margin-top: 30px;
     }
 
-    // h3 ~ h6 标题前的等级提示
+    /* h3 ~ h6 标题前的等级提示 */
     @for $i from 3 through 6 {
         @if($i == 3) {
-            > h#{$i}.md-focus:before {
+            > h3.md-focus:before {
                 top: .375rem
             }
         }
@@ -76,11 +66,20 @@ body {
 }
 
 // 标题
+%heading {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    cursor: text;
+}
 $heading-size: 2.25em;
 $heading-line-height: 1.2;
 @for $i from 1 through 6 {
     h#{$i} {
-        @include heading($heading-size, $heading-line-height);
+        @extend %heading;
+        font-size: $heading-size;
+        line-height: $heading-line-height;
         @if($i == 1 or $i == 2) {
             border-bottom: 1px solid var(--border-bottom-color);
             padding-bottom: 3px;
@@ -105,16 +104,16 @@ $heading-line-height: 1.2;
     $heading-size: $heading-size - 0.25em;
     $heading-line-height: $heading-line-height + 0.05;
 }
-
-
+/* 段落 */
 p {
-    @extend %margin
+    margin: 0.8em 0;
+    line-height: 2;
 }
 
 // 有序列表和无序列表
 ul,
 ol {
-    @extend %margin;
+    margin: 0.8em 0;
     padding-left: 30px;
     &:last-child {
         margin-bottom: 0;
@@ -137,7 +136,7 @@ dl {
 
 //块引用
 blockquote {
-    @extend %margin;
+    margin: 0.8em 0;
     border-left: 4px solid var(--blockquote-border-left-color);
     padding: 0 15px;
     color: var(--blockquote-color);
@@ -148,20 +147,15 @@ blockquote {
 
 // 表格
 table {
-    @extend %margin;
-    @extend %p-0;
+    margin: 0.8em 0;
+    padding: 0;
     word-break: inherit;
-    tr {
-        @extend %m-0;
-        @extend %p-0;
-        &:nth-child(2n) {
-            background-color: var(--tr-zebra-striping-background-color);
-        }
-    }
 
-    th,
-    td {
-        @extend %m-0;
+    %tr-th-td {
+        margin: 0;
+        border: 1px solid var(--table-border-color);
+    }
+    %th-td {
         padding: 6px 13px;
         &:first-child {
             margin-top: 0;
@@ -170,26 +164,27 @@ table {
             margin-bottom: 0;
         }
     }
-
+    tr {
+        @extend %tr-th-td;
+        padding: 0;
+        &:nth-child(2n) {
+            background-color: var(--tr-zebra-striping-background-color);
+        }
+    }
     th {
-        @extend %m-0;
-        border-bottom: 0;
+        @extend %tr-th-td;
+        @extend %th-td;
         font-weight: bold;
     }
-
-    tr,
-    th,
     td {
-        border: 1px solid var(--table-border-color);
+        @extend %tr-th-td;
+        @extend %th-td;
     }
 }
-
 
 thead {
     background-color: var(--thead-background-color);
 }
-
-
 
 hr {
     box-sizing: content-box;
@@ -208,7 +203,7 @@ pre {
     }
 }
 
-// 行内代码
+/* 内联代码 */
 code,
 tt {
     border-radius: 3px;
@@ -510,15 +505,10 @@ footer {
         border-color: #e5e5e5;
     }
 }
-
+/* 设置 */
 .ty-preferences {
     .window-content {
-        @media (prefers-color-scheme: light) {
-            background-color: #fafafa;
-        }
-        @media (prefers-color-scheme: dark) {
-            background-color: var(--bg-color);
-        }
+        background-color: var(--window-content-bg-color);
     }
     .nav-group-item.active {
         color: white;
