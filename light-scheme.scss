@@ -1,29 +1,31 @@
-@media (prefers-color-scheme: light){
-  --side-bar-bg-color: #fafafa;
-  --control-text-color: #777;
-  --select-text-bg-color: #0e6bdd91;
-  --body-color: #333;
+@media (prefers-color-scheme: light) {
+  :root {
+      --side-bar-bg-color: #fafafa;
+      --control-text-color: #777;
+      --select-text-bg-color: #0e6bdd91;
+      --body-color: #333;
 
-  // border
-  --border-bottom-color: #eee;
+      // border
+      --border-bottom-color: #eee;
 
-  --code-border-color: #808080b3;
-  // background
-  --hr-background-color: #e7e7e7;
+      --code-border-color: #808080b3;
+      // background
+      --hr-background-color: #e7e7e7;
 
-  // 右键菜单
-  --context-menu-btn-background-color: #f5f8fa;
-  --context-menu-btn-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+      // 右键菜单
+      --context-menu-btn-background-color: #f5f8fa;
+      --context-menu-btn-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
 
-  // 块引用
-  --blockquote-border-left-color: #dfe2e5;
-  --blockquote-color: #777777;
+      // 块引用
+      --blockquote-border-left-color: #dfe2e5;
+      --blockquote-color: #777777;
 
-  // 表格
-  --table-border-color: var(--blockquote-border-left-color);
-  --tr-zebra-striping-background-color: #f8f8f8;
-  --thead-background-color: var(--tr-zebra-striping-background-color);
+      // 表格
+      --table-border-color: var(--blockquote-border-left-color);
+      --tr-zebra-striping-background-color: #f8f8f8;
+      --thead-background-color: var(--tr-zebra-striping-background-color);
 
-  // 行内代码
-  --code-background-color: #f3f4f4;
+      // 行内代码
+      --code-background-color: #f3f4f4;
+  }
 }

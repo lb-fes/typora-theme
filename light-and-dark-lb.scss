@@ -1,389 +1,547 @@
 // 编译并监视：
 // sass --watch light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
-
+@import "light-scheme";
+@import "dark-scheme";
 :root {
-    @import "light-scheme";
-    @import "dark-scheme";
-    --monospace: "IBM Plex Mono", "Fira Code", "微软雅黑", monospace;
+    --monospace: "JetBrains Mono NL", "Fira Code", "微软雅黑", monospace;
     --link-color: #4183C4;
     --link-hover-border-bottom: var(--link-color);
-    --sans-serif: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    --sans-serif: "HarmonyOS Sans SC","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
     --search-select-bg-color: var(--select-text-bg-color);
 }
 @import "vsc-scheme";
+@import "class";
+@import "mixin";
 
-// loli.net 是 SM.MS 免费图床的图片 CDN 域名
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext)
+html {
+    font-size: 16px;
+    @media print {
+        font-size: 13px;
+    }
+    -webkit-font-smoothing: antialiased
+}
 
-html
-  font-size: 16px
-  @media print
-    font-size: 13px
-  -webkit-font-smoothing: antialiased
+body {
+    font-family: var(--sans-serif);
+    line-height: 1.6;
+    color: var(--body-color);
+}
 
-body
-  font-family: var(--sans-serif)
-  line-height: 1.6
-  color: var(--body-color)
-#write
-  max-width: 768px
-  margin: 0 auto
-  padding: 50px 30px 100px
 
-  // @media only screen and (min-width: 1400px)
-  //   max-width: 1024px
-  // @media only screen and (min-width: 1800px)
-  //   max-width: 1200px
 
-  > ul:first-child,
-  > ol:first-child
-      margin-top: 30px
+#write {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 50px 30px 100px;
 
-  @for $i from 3 through 6
-    @if($i == 3)
-      > h#{$i}.md-focus:before
-        top: .375rem
-    @else
-      > h#{$i}.md-focus:before
-          left: -1.5625rem
-          top: .285714286rem
-  a
-    text-decoration: none
-    color: var(--link-color)
-    &:hover
-      border-bottom: 1px solid var(--link-hover-border-bottom)
-  // YAML
-  pre.md-meta-block
-    margin-top: 0 !important
-    border: 0
-    border-radius: 3px
-    padding: 1rem
-    font-size: 85%
-    line-height: 1.45
-    background-color: #f7f7f7
-    color: #777777
+    > ul:first-child,
+    > ol:first-child {
+        margin-top: 30px;
+    }
+
+    // h3 ~ h6 标题前的等级提示
+    @for $i from 3 through 6 {
+        @if($i == 3) {
+            > h#{$i}.md-focus:before {
+                top: .375rem
+            }
+        }
+        @else {
+            > h#{$i}.md-focus:before {
+                left: -1.5625rem;
+                top: .285714286rem;
+            }
+        }
+    }
+    // 链接
+    a {
+        text-decoration: none;
+        color: var(--link-color);
+
+        &:hover {
+            border-bottom: 1px solid var(--link-hover-border-bottom);
+        }
+    }
+    // YAML
+    pre.md-meta-block {
+        margin-top: 0 !important;
+        border: 0;
+        border-radius: 3px;
+        padding: 1rem;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        color: #777777;
+    }
+}
+
 // 标题
-$heading-size: 2.25em
-$heading-line-height: 1.2
-@for $i from 1 through 6
-  h#{$i}
-    position: relative
-    margin-top: 1rem
-    margin-bottom: 1rem
-    @if($i == 1 or $i == 2)
-      border-bottom: 1px solid var(--border-bottom-color)
-      padding-bottom: 3px
-    font-size: $heading-size
-    font-weight: bold
-    line-height: $heading-line-height
-    cursor: text
-    @if ($i == 1)
-      text-align: center
-    &:hover
-      a.anchor
-        text-decoration: none
-    tt,
-    code
-      font-size: inherit
+$heading-size: 2.25em;
+$heading-line-height: 1.2;
+@for $i from 1 through 6 {
+    h#{$i} {
+        @include heading($heading-size, $heading-line-height);
+        @if($i == 1 or $i == 2) {
+            border-bottom: 1px solid var(--border-bottom-color);
+            padding-bottom: 3px;
+        }
+        @if ($i == 1) {
+            text-align: center;
+        }
 
-  $heading-size: $heading-size - 0.25em
-  $heading-line-height: $heading-line-height + 0.05
+        &:hover {
+            // 标题上的内联链接
+            a.anchor {
+                text-decoration: none;
+            }
+        }
+        //内联代码
+        tt,
+        code {
+            font-size: inherit;
+        }
+    }
 
-p,
-blockquote,
+    $heading-size: $heading-size - 0.25em;
+    $heading-line-height: $heading-line-height + 0.05;
+}
+
+
+p {
+    @extend %margin
+}
+
+// 有序列表和无序列表
 ul,
-ol,
-dl,
-table
-  margin: 0.8em 0
+ol {
+    @extend %margin;
+    padding-left: 30px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+li {
+    > ol,
+    > ul {
+        margin: 0 0;
+    }
 
-ul,
-ol
-  padding-left: 30px
-  &:last-child
-    margin-bottom: 0
+    p.first {
+        display: inline-block;
+    }
+}
+//描述列表
+dl {
+    margin: 0.8em 0;
+}
 
-li
-  > ol,
-  > ul
-    margin: 0 0
+//块引用
+blockquote {
+    @extend %margin;
+    border-left: 4px solid var(--blockquote-border-left-color);
+    padding: 0 15px;
+    color: var(--blockquote-color);
+    blockquote {
+        padding-left: 0;
+    }
+}
 
-  p.first
-    display: inline-block
-
-blockquote
-  border-left: 4px solid var(--blockquote-border-left-color)
-  color: var(--blockquote-color)
-  padding: 0 15px
-  blockquote
-    padding-left: 0
 // 表格
-table
-  padding: 0
-  word-break: inherit
-  tr
-    margin: 0
-    padding: 0
-    &:nth-child(2n)
-      background-color: var(--tr-zebra-striping-background-color)
-  th,
-  td
-    margin: 0
-    padding: 6px 13px
-    &:first-child
-      margin-top: 0
-    &:last-child
-      margin-bottom: 0
-  th
-    border-bottom: 0
-    font-weight: bold
-  tr,
-  th,
-  td
-    border: 1px solid var(--table-border-color)
-thead
-  background-color: var(--thead-background-color)
+table {
+    @extend %margin;
+    @extend %p-0;
+    word-break: inherit;
+    tr {
+        @extend %m-0;
+        @extend %p-0;
+        &:nth-child(2n) {
+            background-color: var(--tr-zebra-striping-background-color);
+        }
+    }
 
-hr
-  box-sizing: content-box
-  height: 2px
-  margin: 16px 0
-  border: 0 none
-  padding: 0
-  overflow: hidden
-  background-color: var(--hr-background-color)
-pre
-  @media print
-    page-break-inside: avoid
-    word-wrap: break-word
+    th,
+    td {
+        @extend %m-0;
+        padding: 6px 13px;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    th {
+        @extend %m-0;
+        border-bottom: 0;
+        font-weight: bold;
+    }
+
+    tr,
+    th,
+    td {
+        border: 1px solid var(--table-border-color);
+    }
+}
+
+
+thead {
+    background-color: var(--thead-background-color);
+}
+
+
+
+hr {
+    box-sizing: content-box;
+    height: 2px;
+    margin: 16px 0;
+    border: 0 none;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--hr-background-color);
+}
+
+pre {
+    @media print {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
 // 行内代码
 code,
-tt
-  border-radius: 3px
-  padding: 1px 2px 2px 2px
-  font-size: 0.9em
-  border: 1px solid var(--code-border-color)
-  background-color: var(--code-background-color)
+tt {
+    border-radius: 3px;
+    padding: 1px 2px 2px 2px;
+    font-size: 0.9em;
+    border: 1px solid var(--code-border-color);
+    background-color: var(--code-background-color);
+}
+
 // 代码块
-.md-fences
-  margin-top: 15px
-  margin-bottom: 15px
-  border: 0
-  border-radius: 6px
-  padding: 8px 4px 6px 4px
-  background-color: #1e1e1e
-  font-size: .9em
-  color: #d1d5db
-  .code-tooltip
-    border-radius: 6px
+.md-fences {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 0;
+    border-radius: 6px;
+    padding: 8px 4px 6px 4px;
+    background-color: #1e1e1e;
+    font-size: .9em;
+    color: #d1d5db;
 
-.md-
-  &task-list-item
-    > input
-      margin-left: -1.3em
-  &mathjax-midline
-    background: #fafafa
-  &image
-    > .md-meta
-      border-radius: 3px
-      padding: 2px 0 0 4px
-      font-size: .9em
-      color: inherit
-  &tag
-    color: #a7a7a7
-    opacity: 1
-  &lang
-    color: #b4654d
+    .code-tooltip {
+        border-radius: 6px;
+    }
+}
 
-.code-tooltip
-  box-shadow: none
-  border: 1px solid grey
+.md- {
+    &task-list-item {
+        > input {
+            margin-left: -1.3em;
+        }
+    }
 
-.CodeMirror
-  &-lines  // 行
-      padding-left: 4px
-  &-linenumber // 行号
-    color: #808080
-  &-gutters  // 行号右侧的竖线
-    border-right: 1px solid #484848
-  div.CodeMirror-cursor // 代码块内的光标
-    border-left: 1px solid #adaeac
+    &mathjax-midline {
+        background: #fafafa;
+    }
 
-.cm-
-  &s-
-    &inner
-      .cm-
-        &keyword
-          color: var(--vsc-keyword)
-        &atom
-          color: $vsc-atom
-        &string
-          color: $vsc-string
-        &string-2
-          color: $vsc-string
-        &number
-          color: $vsc-number
-        &qualifier
-          color: $vsc-qualifier
-        &builtin  // CSS: id选择器
-          color: $vsc-builtin
-        &bracket
-          color: $vsc-bracket
-        &header
-          color: $vsc-header
-        &def  // CSS: @规则
-          color: $vsc-def
-        &variable
-          color: $vsc-var
-        &variable-2
-          color: $vsc-var
-        &variable-3 // 包含 CSS 伪类
-          color: #d7ba7d
-        &property
-          color: $vsc-property
-        &attribute
-          color: $vsc-attribute
-        &operator
-          color: $vsc-operator
-        &meta
-          color: $vsc-meta
-        &hr
-          color: $vsc-hr
-        &comment
-          color: $vsc-comment
-        &quote
-          color: $vsc-quote
-        &tag
-          color: $vsc-tag
-        &link
-          color: $vsc-link
-        &negative
-          color: $vsc-negative
-        &positive
-          color: $vsc-positive
-        // typescript 类型
-        &type
-          color: #37c8ac
-      &.cm-
-        &atom
-          color: #9CDCFE
-        &comment
-          color: $vsc-comment
-    &typora-default
-      .CodeMirror-activeline-background
-        left: -9999px
-        right: -9999px
-        background: #80808020
-      .cm-
-        &code,
-        &comment
-          color: $vsc-comment
-          font-family: var(--monospace)
-        &string
-          color: #CE9178
-        &tag
-          color: $vsc-tag
-  &header,
-  &strong
-    font-weight: 700
-  &em
-    font-style: italic
-  &link
-    text-decoration: underline
-  &error,
-  &invalidchar
-    color: $vsc-negative
-  &constant
-    color: #4EC9B0
-  &defined
-    color: $vsc-number
-  &searching
-    // 出于兼容性考虑，设置两个 background
-    // fixme 似乎都不会生效
-    background: #ffa  // #ffffaa 的缩写
-    background: rgba(255, 255, 0, .4)
-  &tw-syntaxerror
-    color: $vsc-operator
-    background-color: #900
+    &image {
+        > .md-meta {
+            border-radius: 3px;
+            padding: 2px 0 0 4px;
+            font-size: .9em;
+            color: inherit;
+        }
+    }
 
-div.CodeMirror
-  span.CodeMirror-
-    &matchingbracket
-      color: $vsc-number
-    &nonmatchingbracket
-      color: $vsc-negative
+    &tag {
+        color: #a7a7a7;
+        opacity: 1;
+    }
 
-#typora-
-  &source
-    .CodeMirror-gutter-wrapper
-      font-family: var(--monospace) !important
-  &quick-open
-    border: 1px solid #ddd
-    background-color: #f8f8f8
-    &-item
-      border-width: 1px
-      border-style: solid
-      background-color: #FAFAFA
-      border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee
-.mathjax-block
-  > .code-tooltip
-    bottom: .375rem
+    &lang {
+        color: #b4654d;
+    }
+}
 
-.sidebar-tabs
-  border-bottom: none
 
-// focus mode
-.on-focus-mode
-  blockquote
-    border-left-color: rgba(85, 85, 85, .12)
+.code-tooltip {
+    box-shadow: none;
+    border: 1px solid grey;
+}
+
+.CodeMirror {
+    &-lines { // 行
+        padding-left: 4px;
+    }
+
+    &-linenumber { // 行号
+        color: #808080;
+    }
+
+    &-gutters { // 行号右侧的竖线
+        border-right: 1px solid #484848;
+    }
+
+    div.CodeMirror-cursor { // 代码块内的光标
+        border-left: 1px solid #adaeac;
+    }
+}
+
+
+.cm- {
+    &s- {
+        &inner {
+            .cm- {
+                &keyword {
+                    color: var(--vsc-keyword);
+                }
+                &atom {
+                    color: var(--vsc-atom);
+                }
+                &string {
+                    color: var(--vsc-string);
+                }
+                &string-2 {
+                    color: var(--vsc-string);
+                }
+                &number {
+                    color: var(--vsc-number);
+                }
+                &qualifier {
+                    color: var(--vsc-qualifier);
+                }
+                &builtin {
+                    color: var(--vsc-builtin);
+                }
+                &bracket {
+                    color: var(--vsc-bracket);
+                }
+                &header {
+                    color: var(--vsc-header);
+                }
+                &def {
+                    color: var(--vsc-def);
+                }
+                &variable {
+                    color: var(--vsc-var);
+                }
+                &variable-2 {
+                    color: var(--vsc-var);
+                }
+                &variable-3 {
+                    color: #d7ba7d;
+                }
+                &property {
+                    color: var(--vsc-property);
+                }
+                &attribute {
+                    color: var(--vsc-attribute);
+                }
+                &operator {
+                    color: var(--vsc-operator);
+                }
+                &meta {
+                    color: var(--vsc-meta);
+                }
+                &hr {
+                    color: var(--vsc-hr);
+                }
+                &comment {
+                    color: var(--vsc-comment);
+                }
+                &quote {
+                    color: var(--vsc-quote);
+                }
+                &tag {
+                    color: var(--vsc-tag);
+                }
+                &link {
+                    color: var(--vsc-link);
+                }
+                &negative {
+                    color: var(--vsc-negative);
+                }
+                &positive {
+                    color: var(--vsc-positive);
+                }
+                &type {
+                    color: #37c8ac;
+                }
+            }
+            &.cm- {
+                &atom {
+                    color: #9CDCFE;
+                }
+                &comment {
+                    color: var(--vsc-comment);
+                }
+            }
+        }
+        &typora-default {
+            .CodeMirror-activeline-background {
+                left: -9999px;
+                right: -9999px;
+                background: #80808020;
+            }
+            .cm- {
+                &code,
+                &comment {
+                    color: var(--vsc-comment);
+                    font-family: var(--monospace);
+                }
+                &string {
+                    color: #CE9178;
+                }
+                &tag {
+                    color: var(--vsc-tag);
+                }
+            }
+        }
+    }
+    &header,
+    &strong {
+        font-weight: 700;
+    }
+    &em {
+        font-style: italic;
+    }
+    &link {
+        text-decoration: underline;
+    }
+    &error,
+    &invalidchar {
+        color: var(--vsc-negative);
+    }
+    &constant {
+        color: #4EC9B0;
+    }
+    &defined {
+        color: var(--vsc-number);
+    }
+    &searching {
+        background: #ffa;
+        background: rgba(255, 255, 0, .4);
+    }
+    &tw-syntaxerror {
+        color: var(--vsc-operator);
+        background-color: #900;
+    }
+}
+
+
+
+div.CodeMirror {
+    span.CodeMirror- {
+        &matchingbracket {
+            color: var(--vsc-number);
+        }
+        &nonmatchingbracket {
+            color: var(--vsc-negative);
+        }
+    }
+}
+
+#typora- {
+    &source {
+        .CodeMirror-gutter-wrapper {
+            font-family: var(--monospace) !important;
+        }
+    }
+
+    &quick-open {
+        border: 1px solid #ddd;
+        background-color: #f8f8f8;
+        &-item {
+            border-width: 1px;
+            border-style: solid;
+            background-color: #FAFAFA;
+            border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+        }
+    }
+}
+
+.mathjax-block {
+    > .code-tooltip {
+        bottom: .375rem;
+    }
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.on-focus-mode {
+    blockquote {
+        border-left-color: rgba(85, 85, 85, .12);
+    }
+}
 
 header,
 .context-menu,
 .megamenu-content,
-footer
-  font-family: var(--sans-serif)
+footer {
+    font-family: var(--sans-serif);
+}
 
-.file-node-content:hover
-  .file-node-
-    &icon,
-    &open-state
-      visibility: visible
+.file-node-content:hover {
+    .file-node- {
+        &icon,
+        &open-state {
+            visibility: visible;
+        }
+    }
+}
 
-.mac-seamless-mode
-  #typora-sidebar
-    background-color: var(--side-bar-bg-color)
+.mac-seamless-mode {
+    #typora-sidebar {
+        background-color: var(--side-bar-bg-color);
+    }
+}
 
-#md-notification
-  .btn
-    border: 0
+#md-notification {
+    .btn {
+        border: 0;
+    }
+}
 
-.dropdown-menu
-  .divider
-    border-color: #e5e5e5
+.dropdown-menu {
+    .divider {
+        border-color: #e5e5e5;
+    }
+}
 
-.ty-preferences   // 设置页
-  .window-content
-    @media (prefers-color-scheme: light)
-      background-color: #fafafa
-    @media (prefers-color-scheme: dark)
-      background-color: var(--bg-color)
-  .nav-group-item.active
-    color: white
-    background: #999
+.ty-preferences {
+    .window-content {
+        @media (prefers-color-scheme: light) {
+            background-color: #fafafa;
+        }
+        @media (prefers-color-scheme: dark) {
+            background-color: var(--bg-color);
+        }
+    }
+    .nav-group-item.active {
+        color: white;
+        background: #999;
+    }
+}
 
-// 右键菜单
-.context-menu
-  border: 1px solid var(--border-color)
-// 右键菜单上的按钮样式
-.menu-item-container
-  a.menu-style-btn
-    background-color: var(--context-menu-btn-background-color)
-    background-image: var(--context-menu-btn-background-image)
+.context-menu {
+    border: 1px solid var(--border-color);
+}
 
-// 源代码模式 切换源代码模式按钮
-.typora-sourceview-on #toggle-sourceview-btn
-  background: var(--side-bar-bg-color)
-// 悬停在切换源代码模式按钮，显示的提示
-.ty-tooltip
-  background: var(--side-bar-bg-color)
-  color: white
+.menu-item-container {
+    a.menu-style-btn {
+        background-color: var(--context-menu-btn-background-color);
+        background-image: var(--context-menu-btn-background-image);
+    }
+}
+
+.typora-sourceview-on #toggle-sourceview-btn {
+    background: var(--side-bar-bg-color);
+}
+
+.ty-tooltip {
+    background: var(--side-bar-bg-color);
+    color: white;
+}
