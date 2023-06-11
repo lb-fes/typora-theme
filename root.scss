@@ -1,0 +1,13 @@
+:root {
+    /* 字体 */
+    --monospace: "JetBrains Mono NL", "Fira Code", "微软雅黑", monospace;
+    --sans-serif: "HarmonyOS Sans SC","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    /* 搜索 */
+    --search-select-bg-color: var(--select-text-bg-color);
+    /* html */
+    --html-size: 16px;
+    /* 打印 */
+    --print-html-size: calc(var(--html-size) - 3px);
+    /* body */
+    --body-line-height: 1.6;
+}
