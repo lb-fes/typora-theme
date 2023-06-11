@@ -1,9 +1,0 @@
-@mixin heading($heading-size, $heading-line-height) {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: $heading-size;
-    font-weight: bold;
-    line-height: $heading-line-height;
-    cursor: text;
-}
