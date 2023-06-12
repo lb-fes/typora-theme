@@ -1,7 +1,7 @@
 // 编译并监视：
 // sass --watch light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
 // 压缩代码：
-// sass -s compressed light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
+// sass light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --style=compressed --no-source-map
 @import "light-scheme";
 @import "dark-scheme";
 @import "root";
