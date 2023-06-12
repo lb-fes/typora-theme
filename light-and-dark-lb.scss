@@ -133,6 +133,12 @@ li {
 dl {
     margin: 0.8em 0;
 }
+/* 任务列表 */
+.md-task-list-item {
+    > input {
+        margin-left: -1.3em;
+    }
+}
 
 //块引用
 blockquote {
@@ -223,243 +229,252 @@ tt {
     background-color: #1e1e1e;
     font-size: .9em;
     color: #d1d5db;
-
+    // 代码语言提示
     .code-tooltip {
+        box-shadow: none;
         border-radius: 6px;
+        border: 1px solid grey;
     }
 }
-
-.md- {
-    &task-list-item {
-        > input {
-            margin-left: -1.3em;
-        }
-    }
-
-    &mathjax-midline {
-        background: #fafafa;
-    }
-
-    &image {
-        > .md-meta {
-            border-radius: 3px;
-            padding: 2px 0 0 4px;
-            font-size: .9em;
-            color: inherit;
-        }
-    }
-
-    &tag {
-        color: #a7a7a7;
-        opacity: 1;
-    }
-
-    &lang {
-        color: #b4654d;
-    }
+// 行
+.CodeMirror-lines {
+    padding-left: 4px;
 }
-
-
-.code-tooltip {
-    box-shadow: none;
-    border: 1px solid grey;
+// 行号
+.CodeMirror-linenumber {
+    color: #808080;
 }
-
+// 行号右侧的竖线
+.CodeMirror-gutters {
+    border-right: 1px solid #484848;
+}
 .CodeMirror {
-    &-lines { // 行
-        padding-left: 4px;
-    }
-
-    &-linenumber { // 行号
-        color: #808080;
-    }
-
-    &-gutters { // 行号右侧的竖线
-        border-right: 1px solid #484848;
-    }
-
-    div.CodeMirror-cursor { // 代码块内的光标
+    // 代码块内的光标
+    div.CodeMirror-cursor {
         border-left: 1px solid #adaeac;
     }
 }
 
+.cm-s-inner {
+    .cm-keyword {
+        color: var(--vsc-keyword);
+    }
 
-.cm- {
-    &s- {
-        &inner {
-            .cm- {
-                &keyword {
-                    color: var(--vsc-keyword);
-                }
-                &atom {
-                    color: var(--vsc-atom);
-                }
-                &string {
-                    color: var(--vsc-string);
-                }
-                &string-2 {
-                    color: var(--vsc-string);
-                }
-                &number {
-                    color: var(--vsc-number);
-                }
-                &qualifier {
-                    color: var(--vsc-qualifier);
-                }
-                &builtin {
-                    color: var(--vsc-builtin);
-                }
-                &bracket {
-                    color: var(--vsc-bracket);
-                }
-                &header {
-                    color: var(--vsc-header);
-                }
-                &def {
-                    color: var(--vsc-def);
-                }
-                &variable {
-                    color: var(--vsc-var);
-                }
-                &variable-2 {
-                    color: var(--vsc-var);
-                }
-                &variable-3 {
-                    color: #d7ba7d;
-                }
-                &property {
-                    color: var(--vsc-property);
-                }
-                &attribute {
-                    color: var(--vsc-attribute);
-                }
-                &operator {
-                    color: var(--vsc-operator);
-                }
-                &meta {
-                    color: var(--vsc-meta);
-                }
-                &hr {
-                    color: var(--vsc-hr);
-                }
-                &comment {
-                    color: var(--vsc-comment);
-                }
-                &quote {
-                    color: var(--vsc-quote);
-                }
-                &tag {
-                    color: var(--vsc-tag);
-                }
-                &link {
-                    color: var(--vsc-link);
-                }
-                &negative {
-                    color: var(--vsc-negative);
-                }
-                &positive {
-                    color: var(--vsc-positive);
-                }
-                &type {
-                    color: #37c8ac;
-                }
-            }
-            &.cm- {
-                &atom {
-                    color: #9CDCFE;
-                }
-                &comment {
-                    color: var(--vsc-comment);
-                }
-            }
-        }
-        &typora-default {
-            .CodeMirror-activeline-background {
-                left: -9999px;
-                right: -9999px;
-                background: #80808020;
-            }
-            .cm- {
-                &code,
-                &comment {
-                    color: var(--vsc-comment);
-                    font-family: var(--monospace);
-                }
-                &string {
-                    color: #CE9178;
-                }
-                &tag {
-                    color: var(--vsc-tag);
-                }
-            }
-        }
+    .cm-atom {
+        color: var(--vsc-atom);
     }
-    &header,
-    &strong {
-        font-weight: 700;
+
+    .cm-string {
+        color: var(--vsc-string);
     }
-    &em {
-        font-style: italic;
+
+    .cm-string-2 {
+        color: var(--vsc-string);
     }
-    &link {
-        text-decoration: underline;
-    }
-    &error,
-    &invalidchar {
-        color: var(--vsc-negative);
-    }
-    &constant {
-        color: #4EC9B0;
-    }
-    &defined {
+
+    .cm-number {
         color: var(--vsc-number);
     }
-    &searching {
-        background: #ffa;
-        background: rgba(255, 255, 0, .4);
+
+    .cm-qualifier {
+        color: var(--vsc-qualifier);
     }
-    &tw-syntaxerror {
+
+    .cm-builtin {
+        color: var(--vsc-builtin);
+    }
+
+    .cm-bracket {
+        color: var(--vsc-bracket);
+    }
+
+    .cm-header {
+        color: var(--vsc-header);
+    }
+
+    .cm-def {
+        color: var(--vsc-def);
+    }
+
+    .cm-variable {
+        color: var(--vsc-var);
+    }
+
+    .cm-variable-2 {
+        color: var(--vsc-var);
+    }
+
+    .cm-variable-3 {
+        color: #d7ba7d;
+    }
+
+    .cm-property {
+        color: var(--vsc-property);
+    }
+
+    .cm-attribute {
+        color: var(--vsc-attribute);
+    }
+
+    .cm-operator {
         color: var(--vsc-operator);
-        background-color: #900;
+    }
+
+    .cm-meta {
+        color: var(--vsc-meta);
+    }
+
+    .cm-hr {
+        color: var(--vsc-hr);
+    }
+
+    .cm-comment {
+        color: var(--vsc-comment);
+    }
+
+    .cm-quote {
+        color: var(--vsc-quote);
+    }
+
+    .cm-tag {
+        color: var(--vsc-tag);
+    }
+
+    .cm-link {
+        color: var(--vsc-link);
+    }
+
+    .cm-negative {
+        color: var(--vsc-negative);
+    }
+
+    .cm-positive {
+        color: var(--vsc-positive);
+    }
+
+    .cm-type {
+        color: var(--vsc-type);
+    }
+
+    &.cm-atom {
+        color: #9CDCFE;
+    }
+
+    &.cm-comment {
+        color: var(--vsc-comment);
     }
 }
 
+.cm-s-typora-default {
+    .CodeMirror-activeline-background {
+        left: -9999px;
+        right: -9999px;
+        background: #80808020;
+    }
+    /* 代码块 */
+    .cm-code,
+    .cm-comment {
+        color: var(--vsc-comment);
+        font-family: var(--monospace);
+    }
+    .cm-string {
+        color: #CE9178;
+    }
+    .cm-tag {
+        color: var(--vsc-tag);
+    }
+}
 
+.cm-header,
+.cm-strong {
+        font-weight: 700;
+    }
+.cm-em {
+    font-style: italic;
+}
+.cm-link {
+    text-decoration: underline;
+}
+.cm-error,
+.cm-invalidchar {
+    color: var(--vsc-negative);
+}
+.cm-constant {
+    color: #4EC9B0;
+}
+.cm-defined {
+    color: var(--vsc-number);
+}
+.cm-searching {
+    background: #ffa;
+    background: rgba(255, 255, 0, .4);
+}
+.cm-tw-syntaxerror {
+    color: var(--vsc-operator);
+    background-color: #900;
+}
 
-div.CodeMirror {
-    span.CodeMirror- {
-        &matchingbracket {
-            color: var(--vsc-number);
-        }
-        &nonmatchingbracket {
-            color: var(--vsc-negative);
+div {
+    &.CodeMirror {
+        span {
+            &.CodeMirror-matchingbracket {
+                color: var(--vsc-number);
+            }
+            &.CodeMirror-nonmatchingbracket {
+                color: var(--vsc-negative);
+            }
         }
     }
 }
 
-#typora- {
-    &source {
-        .CodeMirror-gutter-wrapper {
-            font-family: var(--monospace) !important;
-        }
-    }
-
-    &quick-open {
-        border: 1px solid #ddd;
-        background-color: #f8f8f8;
-        &-item {
-            border-width: 1px;
-            border-style: solid;
-            background-color: #FAFAFA;
-            border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-        }
-    }
+/* 数学公式 */
+.md-mathjax-midline {
+    background: #fafafa;
 }
-
 .mathjax-block {
     > .code-tooltip {
         bottom: .375rem;
     }
+}
+
+.md-image {
+    > .md-meta {
+        border-radius: 3px;
+        padding: 2px 0 0 4px;
+        font-size: .9em;
+        color: inherit;
+    }
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+#typora-source {
+    .CodeMirror-gutter-wrapper {
+        font-family: var(--monospace) !important;
+    }
+}
+.typora-sourceview-on {
+    #toggle-sourceview-btn {
+        background: var(--side-bar-bg-color);
+    }
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+#typora-quick-open-item {
+    border-width: 1px;
+    border-style: solid;
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
 }
 
 .sidebar-tabs {
@@ -480,11 +495,9 @@ footer {
 }
 
 .file-node-content:hover {
-    .file-node- {
-        &icon,
-        &open-state {
-            visibility: visible;
-        }
+    .file-node-icon,
+    .file-node-open-state {
+        visibility: visible;
     }
 }
 
@@ -525,10 +538,6 @@ footer {
         background-color: var(--context-menu-btn-bg-color);
         background-image: var(--context-menu-btn-bg-image);
     }
-}
-
-.typora-sourceview-on #toggle-sourceview-btn {
-    background: var(--side-bar-bg-color);
 }
 
 .ty-tooltip {
