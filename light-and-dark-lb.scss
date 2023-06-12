@@ -110,6 +110,9 @@ $heading-line-height: 1.2;
 p {
     margin: 0.8em 0;
     line-height: 2;
+    // harmony os 字体偏厚、偏小
+    font-weight: 300;
+    font-size: 1.1rem;
 }
 
 // 有序列表和无序列表
