@@ -1,0 +1,25 @@
+:root {
+	/* visual studio code dark plus 配色 */
+	--vsc-keyword: #c586c0; /*关键字*/
+	--vsc-atom: #ce9178; /*原子类型*/
+	--vsc-string: var(--vsc-atom);
+	--vsc-tag: #569cd6; /*tag: 标签元素*/
+	--vsc-link: var(--vsc-tag);
+	--vsc-var: #9cdcfe;
+	--vsc-property: var(--vsc-var);
+	--vsc-attribute: var(--vsc-var);
+	--vsc-number: #dcdcaa; /*数字*/
+	--vsc-qualifier: var(--vsc-number); /*限定符（public、private、protected、static、final、const）*/
+	--vsc-builtin: var(--vsc-number); /*内建*/
+	--vsc-bracket: var(--vsc-number); /*括号*/
+	--vsc-header: var(--vsc-number);
+	--vsc-def: var(--vsc-number); /*函数声明*/
+	--vsc-operator: #d4d4d4; /*操作符*/
+	--vsc-meta: var(--vsc-operator); /*元信息，例如编程语言的特殊指令、注释或其他非代码的辅助性文本。*/
+	--vsc-hr: var(--vsc-operator);
+	--vsc-comment: #6a9955; /*注释*/
+	--vsc-quote: var(--vsc-comment);
+	--vsc-negative: #f44747;
+	--vsc-positive: #b5cea8;
+	--vsc-type: #37c8ac;
+}
