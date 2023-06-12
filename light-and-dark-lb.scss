@@ -168,7 +168,7 @@ table {
         @extend %tr-th-td;
         padding: 0;
         &:nth-child(2n) {
-            background-color: var(--tr-zebra-striping-background-color);
+            background-color: var(--tr-zebra-striping-bg-color);
         }
     }
     th {
@@ -183,7 +183,7 @@ table {
 }
 
 thead {
-    background-color: var(--thead-background-color);
+    background-color: var(--thead-bg-color);
 }
 
 hr {
@@ -193,7 +193,7 @@ hr {
     border: 0 none;
     padding: 0;
     overflow: hidden;
-    background-color: var(--hr-background-color);
+    background-color: var(--hr-bg-color);
 }
 
 pre {
@@ -210,7 +210,7 @@ tt {
     padding: 1px 2px 2px 2px;
     font-size: 0.9em;
     border: 1px solid var(--code-border-color);
-    background-color: var(--code-background-color);
+    background-color: var(--code-bg-color);
 }
 
 // 代码块
@@ -522,8 +522,8 @@ footer {
 
 .menu-item-container {
     a.menu-style-btn {
-        background-color: var(--context-menu-btn-background-color);
-        background-image: var(--context-menu-btn-background-image);
+        background-color: var(--context-menu-btn-bg-color);
+        background-image: var(--context-menu-btn-bg-image);
     }
 }
 

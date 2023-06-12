@@ -12,19 +12,19 @@
         --body-color: #333;
         /* 内联代码 */
         --code-border-color: #808080b3;
-        --code-background-color: #f3f4f4;
+        --code-bg-color: #f3f4f4;
         /* 水平线 */
-        --hr-background-color: #e7e7e7;
+        --hr-bg-color: #e7e7e7;
         /* 右键菜单 */
-        --context-menu-btn-background-color: #f5f8fa;
-        --context-menu-btn-background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+        --context-menu-btn-bg-color: #f5f8fa;
+        --context-menu-btn-bg-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
         /* 块引用 */
         --blockquote-border-left-color: #dfe2e5;
         --blockquote-color: #777777;
         /* 表格 */
         --table-border-color: var(--blockquote-border-left-color);
-        --tr-zebra-striping-background-color: #f8f8f8;
-        --thead-background-color: var(--tr-zebra-striping-background-color);
+        --tr-zebra-striping-bg-color: #f8f8f8;
+        --thead-bg-color: var(--tr-zebra-striping-bg-color);
         /* 链接 */
         --link-color: #0969da;
         --link-hover-border-bottom: var(--link-color);
