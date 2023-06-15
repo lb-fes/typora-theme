@@ -1,7 +1,3 @@
-// 编译并监视：
-// sass --watch light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
-// 压缩代码：
-// sass light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --style=compressed --no-source-map
 @import "light-scheme";
 @import "dark-scheme";
 @import "root";
@@ -345,13 +341,15 @@ tt {
     .cm-link {
         color: var(--vsc-link);
     }
-
+    // diff 语言
     .cm-negative {
         color: var(--vsc-negative);
+        background-color: #400600;
     }
-
+    // diff 语言
     .cm-positive {
         color: var(--vsc-positive);
+        background-color: #074420;
     }
 
     .cm-type {
