@@ -306,6 +306,9 @@ dl {
 /* 任务列表 */
 .md-task-list-item > input {
   margin-left: -1.3em;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
 }
 
 blockquote {
