@@ -59,21 +59,27 @@
 
 用 WebStorm 或 VSCode 打开本项目
 
-在根目录下的终端中，运行以下命令中的一个即可
+Typora 的主题目录（`themes` 目录不存在时需自行创建）：
+
+- Windows：`%APPDATA%\Typora\themes\`
+- macOS：`~/Library/Application Support/abnerworks.Typora/themes/`
+- Linux：`~/.config/Typora/themes/`
+
+在根目录下的终端中，将以下命令中的「主题目录」替换为你系统对应的主题目录，运行以下命令中的一个即可
 
 编译并监视：
 
 ```bash
-sass --watch light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --no-source-map
+sass --watch light-and-dark-lb.scss <主题目录>/light-and-dark-lb.css --no-source-map
 ```
 
 编译并压缩代码：
 
 ```bash
-sass light-and-dark-lb.scss C:\Users\Administrator\AppData\Roaming\Typora\themes\light-and-dark-lb.css --style=compressed --no-source-map
+sass light-and-dark-lb.scss <主题目录>/light-and-dark-lb.css --style=compressed --no-source-map
 ```
 
-然后再设置中勾选 `在深色模式下使用独立的主题` ，浅色和深色主题都选择 `Light And Dark Lb` 主题
+然后在设置中勾选 `在深色模式下使用独立的主题` ，浅色和深色主题都选择 `Light And Dark Lb` 主题
 
 ![image-20230616170205575](README.assets/image-20230616170205575.png)
 
