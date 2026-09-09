@@ -136,8 +136,8 @@ dl {
 .md-task-list-item {
     > input {
         margin-left: -1.3em;
-        /* 复选框底边默认落在文字基线上，其中心比中文视觉中心高约 3px，下移 3px 使其与文字垂直居中 */
-        vertical-align: -3px;
+        /* 诊断用大位移：验证该规则是否真的生效 */
+        vertical-align: -20px;
     }
 }
 
