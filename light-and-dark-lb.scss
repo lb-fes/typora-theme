@@ -1,7 +1,7 @@
-@import "light-scheme";
-@import "dark-scheme";
-@import "root";
-@import "vsc-scheme";
+@use "light-scheme";
+@use "dark-scheme";
+@use "root";
+@use "vsc-scheme";
 
 html {
     font-size: var(--html-size);
@@ -35,6 +35,7 @@ body {
             }
         }
         @else {
+            // 垂直偏移为手调值（2/7 rem），使等级提示与 h4 ~ h6 的标题文本对齐
             > h#{$i}.md-focus:before {
                 left: -1.5625rem;
                 top: .285714286rem;
@@ -58,8 +59,8 @@ body {
         padding: 1rem;
         font-size: 85%;
         line-height: 1.45;
-        background-color: #f7f7f7;
-        color: #777777;
+        background-color: var(--meta-block-bg-color);
+        color: var(--meta-block-color);
     }
 }
 
@@ -355,14 +356,6 @@ tt {
     .cm-type {
         color: var(--vsc-type);
     }
-
-    &.cm-atom {
-        color: #9CDCFE;
-    }
-
-    &.cm-comment {
-        color: var(--vsc-comment);
-    }
 }
 
 .cm-s-typora-default {
@@ -378,7 +371,7 @@ tt {
         font-family: var(--monospace);
     }
     .cm-string {
-        color: #CE9178;
+        color: #ce9178;
     }
     .cm-tag {
         color: var(--vsc-tag);
@@ -387,8 +380,8 @@ tt {
 
 .cm-header,
 .cm-strong {
-        font-weight: 700;
-    }
+    font-weight: 700;
+}
 .cm-em {
     font-style: italic;
 }
@@ -400,7 +393,7 @@ tt {
     color: var(--vsc-negative);
 }
 .cm-constant {
-    color: #4EC9B0;
+    color: #4ec9b0;
 }
 .cm-defined {
     color: var(--vsc-number);
@@ -429,7 +422,7 @@ div {
 
 /* 数学公式 */
 .md-mathjax-midline {
-    background: #fafafa;
+    background: var(--mathjax-midline-bg-color);
 }
 .mathjax-block {
     > .code-tooltip {
@@ -473,8 +466,8 @@ div {
 #typora-quick-open-item {
     border-width: 1px;
     border-style: solid;
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    background-color: #fafafa;
+    border-color: #fefefe #e5e5e5 #e5e5e5 #eee;
 }
 
 .sidebar-tabs {
@@ -541,6 +534,6 @@ footer {
 }
 
 .ty-tooltip {
-    background: var(--side-bar-bg-color);
+    background: var(--ty-tooltip-bg-color);
     color: white;
 }
