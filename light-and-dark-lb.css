@@ -306,9 +306,8 @@ dl {
 /* 任务列表 */
 .md-task-list-item > input {
   margin-left: -1.3em;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
+  /* 复选框默认与文字基线对齐，整体略低 2px，这里上移微调使其与文字视觉居中 */
+  vertical-align: 2px;
 }
 
 blockquote {
