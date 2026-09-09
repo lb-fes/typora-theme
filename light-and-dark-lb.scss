@@ -134,10 +134,22 @@ dl {
 }
 /* 任务列表 */
 .md-task-list-item {
+    /* vertical-align 对 Typora 的任务列表项无效（其内置布局非行内对齐），改用 flex 强制垂直居中 */
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap;
     > input {
+        flex: none;
         margin-left: -1.3em;
-        /* 诊断用大位移：验证该规则是否真的生效 */
-        vertical-align: -20px;
+    }
+    > p {
+        flex: 1;
+        min-width: 0;
+    }
+    > ul,
+    > ol {
+        /* 嵌套子列表独占一行，避免被 flex 挤到复选框右侧 */
+        flex-basis: 100%;
     }
 }
 
