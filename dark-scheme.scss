@@ -38,6 +38,13 @@
         /* 链接 */
         --link-color: #4ba8f8;
         --link-hover-border-bottom: var(--link-color);
+        /* tooltip 提示 */
+        --ty-tooltip-bg-color: var(--side-bar-bg-color);
+        /* YAML */
+        --meta-block-bg-color: #3c3e4a;
+        --meta-block-color: #aaa;
+        /* 数学公式 */
+        --mathjax-midline-bg-color: #ffffff14;
         /* 设置 */
         --window-content-bg-color: var(--bg-color);
     }
