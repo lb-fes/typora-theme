@@ -1,0 +1,650 @@
+@charset "UTF-8";
+@media (prefers-color-scheme: light) {
+  :root {
+    /* 左侧边栏  */
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+    /* 文本编辑区 */
+    --select-text-bg-color: #0e6bdd91;
+    /* border */
+    --border-bottom-color: #eee;
+    /* body */
+    --body-color: #333;
+    /* 内联代码 */
+    --code-border-color: #808080b3;
+    --code-bg-color: #f3f4f4;
+    /* 水平线 */
+    --hr-bg-color: #e7e7e7;
+    /* 右键菜单 */
+    --context-menu-btn-bg-color: #f5f8fa;
+    --context-menu-btn-bg-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+    /* 块引用 */
+    --blockquote-border-left-color: #dfe2e5;
+    --blockquote-color: #777777;
+    /* 表格 */
+    --table-border-color: var(--blockquote-border-left-color);
+    --tr-zebra-striping-bg-color: #f8f8f8;
+    --thead-bg-color: var(--tr-zebra-striping-bg-color);
+    /* 链接 */
+    --link-color: #0969da;
+    --link-hover-border-bottom: var(--link-color);
+    /* tooltip 提示 */
+    --ty-tooltip-bg-color: #333;
+    /* YAML */
+    --meta-block-bg-color: #f7f7f7;
+    --meta-block-color: #777777;
+    /* 数学公式 */
+    --mathjax-midline-bg-color: #fafafa;
+    /* 设置 */
+    --window-content-bg-color: #fafafa;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 左侧边栏和文本编辑区的文本颜色 */
+    --text-color: rgb(209,213,219);
+    /* 左侧边栏 */
+    --side-bar-bg-color: #202123;
+    --control-text-color: rgb(236,236,241);
+    --active-file-bg-color: #343541;
+    --control-text-hover-color: #338bca;
+    --window-border: 1px solid #404040;
+    --item-hover-bg-color: #2a2b32;
+    /* border */
+    --border-color: #777;
+    --border-bottom-color: #808080;
+    /* body */
+    --body-color: #d0d0d0;
+    /* 文本编辑区 */
+    --bg-color: #444654;
+    --select-text-bg-color: #0e6bdd;
+    --heading-char-color: #aaa;
+    --table-border-color: #d9d9e3;
+    --tr-zebra-striping-bg-color: #656773;
+    --thead-bg-color: var(--tr-zebra-striping-bg-color);
+    /* 内联代码 */
+    --code-border-color: #e7eaed4a;
+    --code-bg-color: #77777730;
+    /* 块引用 */
+    --blockquote-border-left-color: #aaaaaa80;
+    --blockquote-color: #aaa;
+    /* 右键菜单按钮 */
+    --context-menu-btn-bg-color: var(--bg-color);
+    --context-menu-btn-bg-image: linear-gradient(180deg, rgba(68, 70, 84, 0.8), rgba(68, 70, 84, 0));
+    /* 水平线 */
+    --hr-bg-color: #c7c5c5;
+    /* 链接 */
+    --link-color: #4ba8f8;
+    --link-hover-border-bottom: var(--link-color);
+    /* tooltip 提示 */
+    --ty-tooltip-bg-color: var(--side-bar-bg-color);
+    /* YAML */
+    --meta-block-bg-color: #3c3e4a;
+    --meta-block-color: #aaa;
+    /* 数学公式 */
+    --mathjax-midline-bg-color: #ffffff14;
+    /* 设置 */
+    --window-content-bg-color: var(--bg-color);
+  }
+}
+:root {
+  /* 字体 */
+  --monospace: "JetBrains Mono NL", "Fira Code", "微软雅黑", monospace;
+  --sans-serif: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+  /* 搜索 */
+  --search-select-bg-color: var(--select-text-bg-color);
+  /* html */
+  --html-size: 16px;
+  /* 打印 */
+  --print-html-size: calc(var(--html-size) - 3px);
+  /* body */
+  --body-line-height: 1.6;
+}
+
+:root {
+  /* visual studio code dark plus 配色 */
+  --vsc-keyword: #c586c0; /*关键字*/
+  --vsc-atom: #ce9178; /*原子类型*/
+  --vsc-string: var(--vsc-atom);
+  --vsc-tag: #569cd6; /*tag: 标签元素*/
+  --vsc-link: var(--vsc-tag);
+  --vsc-var: #9cdcfe;
+  --vsc-property: var(--vsc-var);
+  --vsc-attribute: var(--vsc-var);
+  --vsc-number: #dcdcaa; /*数字*/
+  --vsc-qualifier: var(--vsc-number); /*限定符（public、private、protected、static、final、const）*/
+  --vsc-builtin: var(--vsc-number); /*内建*/
+  --vsc-bracket: var(--vsc-number); /*括号*/
+  --vsc-header: var(--vsc-number);
+  --vsc-def: var(--vsc-number); /*函数声明*/
+  --vsc-operator: #d4d4d4; /*操作符*/
+  --vsc-meta: var(--vsc-operator); /*元信息，例如编程语言的特殊指令、注释或其他非代码的辅助性文本。*/
+  --vsc-hr: var(--vsc-operator);
+  --vsc-comment: #6a9955; /*注释*/
+  --vsc-quote: var(--vsc-comment);
+  --vsc-negative: #f44747;
+  --vsc-positive: #b5cea8;
+  --vsc-type: #37c8ac;
+}
+
+html {
+  font-size: var(--html-size);
+}
+@media print {
+  html {
+    font-size: var(--print-html-size);
+  }
+}
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--sans-serif);
+  line-height: var(--body-line-height);
+  color: var(--body-color);
+}
+
+#write {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 50px 30px 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child {
+  margin-top: 30px;
+}
+#write {
+  /* h3 ~ h6 标题前的等级提示 */
+}
+#write > h3.md-focus:before {
+  top: 0.375rem;
+}
+#write > h4.md-focus:before {
+  left: -1.5625rem;
+  top: 0.285714286rem;
+}
+#write > h5.md-focus:before {
+  left: -1.5625rem;
+  top: 0.285714286rem;
+}
+#write > h6.md-focus:before {
+  left: -1.5625rem;
+  top: 0.285714286rem;
+}
+#write a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+#write a:hover {
+  border-bottom: 1px solid var(--link-hover-border-bottom);
+}
+#write pre.md-meta-block {
+  margin-top: 0 !important;
+  border: 0;
+  border-radius: 3px;
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--meta-block-bg-color);
+  color: var(--meta-block-color);
+}
+
+h6, h5, h4, h3, h2, h1 {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  cursor: text;
+}
+
+h1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid var(--border-bottom-color);
+  padding-bottom: 3px;
+  text-align: center;
+}
+h1:hover a.anchor {
+  text-decoration: none;
+}
+h1 tt,
+h1 code {
+  font-size: inherit;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--border-bottom-color);
+  padding-bottom: 3px;
+}
+h2:hover a.anchor {
+  text-decoration: none;
+}
+h2 tt,
+h2 code {
+  font-size: inherit;
+}
+
+h3 {
+  font-size: 1.75em;
+  line-height: 1.3;
+}
+h3:hover a.anchor {
+  text-decoration: none;
+}
+h3 tt,
+h3 code {
+  font-size: inherit;
+}
+
+h4 {
+  font-size: 1.5em;
+  line-height: 1.35;
+}
+h4:hover a.anchor {
+  text-decoration: none;
+}
+h4 tt,
+h4 code {
+  font-size: inherit;
+}
+
+h5 {
+  font-size: 1.25em;
+  line-height: 1.4;
+}
+h5:hover a.anchor {
+  text-decoration: none;
+}
+h5 tt,
+h5 code {
+  font-size: inherit;
+}
+
+h6 {
+  font-size: 1em;
+  line-height: 1.45;
+}
+h6:hover a.anchor {
+  text-decoration: none;
+}
+h6 tt,
+h6 code {
+  font-size: inherit;
+}
+
+/* 段落 */
+p {
+  margin: 0.8em 0;
+  line-height: 2;
+}
+
+ul,
+ol {
+  margin: 0.8em 0;
+  padding-left: 30px;
+}
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+li > ol,
+li > ul {
+  margin: 0 0;
+}
+li p.first {
+  display: inline-block;
+}
+
+dl {
+  margin: 0.8em 0;
+}
+
+/* 任务列表 */
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+blockquote {
+  margin: 0.8em 0;
+  border-left: 4px solid var(--blockquote-border-left-color);
+  padding: 0 15px;
+  color: var(--blockquote-color);
+}
+blockquote blockquote {
+  padding-left: 0;
+}
+
+table {
+  margin: 0.8em 0;
+  padding: 0;
+  word-break: inherit;
+}
+table td, table th, table tr {
+  margin: 0;
+  border: 1px solid var(--table-border-color);
+}
+table td, table th {
+  padding: 6px 13px;
+}
+table td:first-child, table th:first-child {
+  margin-top: 0;
+}
+table td:last-child, table th:last-child {
+  margin-bottom: 0;
+}
+table tr {
+  padding: 0;
+}
+table tr:nth-child(2n) {
+  background-color: var(--tr-zebra-striping-bg-color);
+}
+table th {
+  font-weight: bold;
+}
+thead {
+  background-color: var(--thead-bg-color);
+}
+
+hr {
+  box-sizing: content-box;
+  height: 2px;
+  margin: 16px 0;
+  border: 0 none;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--hr-bg-color);
+}
+
+@media print {
+  pre {
+    page-break-inside: avoid;
+    word-wrap: break-word;
+  }
+}
+
+/* 内联代码 */
+code,
+tt {
+  border-radius: 3px;
+  padding: 1px 2px 2px 2px;
+  font-size: 0.9em;
+  border: 1px solid var(--code-border-color);
+  background-color: var(--code-bg-color);
+}
+
+.md-fences {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 4px 6px 4px;
+  background-color: #1e1e1e;
+  font-size: 0.9em;
+  color: #d1d5db;
+}
+.md-fences .code-tooltip {
+  box-shadow: none;
+  border-radius: 6px;
+  border: 1px solid grey;
+}
+
+.CodeMirror-lines {
+  padding-left: 4px;
+}
+
+.CodeMirror-linenumber {
+  color: #808080;
+}
+
+.CodeMirror-gutters {
+  border-right: 1px solid #484848;
+}
+
+.CodeMirror div.CodeMirror-cursor {
+  border-left: 1px solid #adaeac;
+}
+
+.cm-s-inner .cm-keyword {
+  color: var(--vsc-keyword);
+}
+.cm-s-inner .cm-atom {
+  color: var(--vsc-atom);
+}
+.cm-s-inner .cm-string {
+  color: var(--vsc-string);
+}
+.cm-s-inner .cm-string-2 {
+  color: var(--vsc-string);
+}
+.cm-s-inner .cm-number {
+  color: var(--vsc-number);
+}
+.cm-s-inner .cm-qualifier {
+  color: var(--vsc-qualifier);
+}
+.cm-s-inner .cm-builtin {
+  color: var(--vsc-builtin);
+}
+.cm-s-inner .cm-bracket {
+  color: var(--vsc-bracket);
+}
+.cm-s-inner .cm-header {
+  color: var(--vsc-header);
+}
+.cm-s-inner .cm-def {
+  color: var(--vsc-def);
+}
+.cm-s-inner .cm-variable {
+  color: var(--vsc-var);
+}
+.cm-s-inner .cm-variable-2 {
+  color: var(--vsc-var);
+}
+.cm-s-inner .cm-variable-3 {
+  color: #d7ba7d;
+}
+.cm-s-inner .cm-property {
+  color: var(--vsc-property);
+}
+.cm-s-inner .cm-attribute {
+  color: var(--vsc-attribute);
+}
+.cm-s-inner .cm-operator {
+  color: var(--vsc-operator);
+}
+.cm-s-inner .cm-meta {
+  color: var(--vsc-meta);
+}
+.cm-s-inner .cm-hr {
+  color: var(--vsc-hr);
+}
+.cm-s-inner .cm-comment {
+  color: var(--vsc-comment);
+}
+.cm-s-inner .cm-quote {
+  color: var(--vsc-quote);
+}
+.cm-s-inner .cm-tag {
+  color: var(--vsc-tag);
+}
+.cm-s-inner .cm-link {
+  color: var(--vsc-link);
+}
+.cm-s-inner .cm-negative {
+  color: var(--vsc-negative);
+  background-color: #400600;
+}
+.cm-s-inner .cm-positive {
+  color: var(--vsc-positive);
+  background-color: #074420;
+}
+.cm-s-inner .cm-type {
+  color: var(--vsc-type);
+}
+
+.cm-s-typora-default .CodeMirror-activeline-background {
+  left: -9999px;
+  right: -9999px;
+  background: rgba(128, 128, 128, 0.1254901961);
+}
+.cm-s-typora-default {
+  /* 代码块 */
+}
+.cm-s-typora-default .cm-code,
+.cm-s-typora-default .cm-comment {
+  color: var(--vsc-comment);
+  font-family: var(--monospace);
+}
+.cm-s-typora-default .cm-string {
+  color: #ce9178;
+}
+.cm-s-typora-default .cm-tag {
+  color: var(--vsc-tag);
+}
+
+.cm-header,
+.cm-strong {
+  font-weight: 700;
+}
+
+.cm-em {
+  font-style: italic;
+}
+
+.cm-link {
+  text-decoration: underline;
+}
+
+.cm-error,
+.cm-invalidchar {
+  color: var(--vsc-negative);
+}
+
+.cm-constant {
+  color: #4ec9b0;
+}
+
+.cm-defined {
+  color: var(--vsc-number);
+}
+
+.cm-searching {
+  background: #ffa;
+  background: rgba(255, 255, 0, 0.4);
+}
+
+.cm-tw-syntaxerror {
+  color: var(--vsc-operator);
+  background-color: #900;
+}
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+  color: var(--vsc-number);
+}
+div.CodeMirror span.CodeMirror-nonmatchingbracket {
+  color: var(--vsc-negative);
+}
+
+/* 数学公式 */
+.md-mathjax-midline {
+  background: var(--mathjax-midline-bg-color);
+}
+
+.mathjax-block > .code-tooltip {
+  bottom: 0.375rem;
+}
+
+.md-image > .md-meta {
+  border-radius: 3px;
+  padding: 2px 0 0 4px;
+  font-size: 0.9em;
+  color: inherit;
+}
+
+.md-tag {
+  color: #a7a7a7;
+  opacity: 1;
+}
+
+.md-lang {
+  color: #b4654d;
+}
+
+#typora-source .CodeMirror-gutter-wrapper {
+  font-family: var(--monospace) !important;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn {
+  background: var(--side-bar-bg-color);
+}
+
+#typora-quick-open {
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+  border-width: 1px;
+  border-style: solid;
+  background-color: #fafafa;
+  border-color: #fefefe #e5e5e5 #e5e5e5 #eee;
+}
+
+.sidebar-tabs {
+  border-bottom: none;
+}
+
+.on-focus-mode blockquote {
+  border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: var(--sans-serif);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+  visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+  background-color: var(--side-bar-bg-color);
+}
+
+#md-notification .btn {
+  border: 0;
+}
+
+.dropdown-menu .divider {
+  border-color: #e5e5e5;
+}
+
+/* 设置 */
+.ty-preferences .window-content {
+  background-color: var(--window-content-bg-color);
+}
+.ty-preferences .nav-group-item.active {
+  color: white;
+  background: #999;
+}
+
+.context-menu {
+  border: 1px solid var(--border-color);
+}
+
+.menu-item-container a.menu-style-btn {
+  background-color: var(--context-menu-btn-bg-color);
+  background-image: var(--context-menu-btn-bg-image);
+}
+
+.ty-tooltip {
+  background: var(--ty-tooltip-bg-color);
+  color: white;
+}
